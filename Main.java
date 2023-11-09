@@ -1,32 +1,43 @@
-import java.util.Scanner;
+ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("1人目の情報を入力してください:");
         System.out.print("身長を入力してください※小数点は切り捨てで入力してください: ");
-        int height = scanner.nextInt();
+        int height1 = scanner.nextInt();
 
         System.out.print("体重を入力してください※小数点は切り捨てで入力してください: ");
-        int weight = scanner.nextInt();
+        int weight1 = scanner.nextInt();
 
-        double bmi = calculateBMI(weight, height);
+        System.out.println("2人目の情報を入力してください:");
+        System.out.print("身長を入力してください※小数点は切り捨てで入力してください: ");
+        int height2 = scanner.nextInt();
 
-        
-        String formattedBMI = String.format("%.1f", bmi);
+        System.out.print("体重を入力してください※小数点は切り捨てで入力してください: ");
+        int weight2 = scanner.nextInt();
 
-        System.out.println("あなたのBMIは " + formattedBMI + " です。");
+        double bmi1 = calculateBMI(weight1, height1);
+        double bmi2 = calculateBMI(weight2, height2);
 
-        String result = interpretBMI(bmi);
-        System.out.println("BMIの評価: " + result);
+        String formattedBMI1 = String.format("%.2f", bmi1);
+        String formattedBMI2 = String.format("%.2f", bmi2);
+
+        System.out.println("1人目のBMIは " + formattedBMI1 + " です。");
+        System.out.println("2人目のBMIは " + formattedBMI2 + " です.");
+
+        String result1 = interpretBMI(bmi1);
+        String result2 = interpretBMI(bmi2);
+
+        System.out.println("1人目のBMIの評価: " + result1);
+        System.out.println("2人目のBMIの評価: " + result2);
 
         scanner.close();
     }
 
     public static double calculateBMI(int weight, int height) {
-        
         double heightInMeters = height / 100.0;
-        
         return (double) weight / (heightInMeters * heightInMeters);
     }
 
@@ -46,3 +57,4 @@ public class Main {
         }
     }
 }
+ 
